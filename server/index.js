@@ -7,6 +7,10 @@ const config = require("./config/key");
 const { auth } = require("./middleware/auth");
 const { User } = require("./models/User");
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
 // application/x-www-form-urlencoded 이렇게 생긴 데이터를 분석해서 가져올 수 있게 해준다.
 app.use(bodyParser.urlencoded({ extended: true }));
 
