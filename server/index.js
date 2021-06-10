@@ -94,7 +94,7 @@ app.post("/api/users/login", (req, res) => {
 // middleware란 endpoint(/api/users/auth)에 req를 받은 다음 callback하기 전에 중간에서 뭐를 해주는 역할
 app.get("/api/users/auth", auth, (req, res) => {
   // 여기 까지 middleware를 통과해 왔다는 얘기는 Authentication이 true라는 말
-  res.status(304).json({
+  res.status(200).json({
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
@@ -109,7 +109,7 @@ app.get("/api/users/auth", auth, (req, res) => {
 app.get("/api/users/logout", auth, (req, res) => {
   User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
     if (err) return res.json({ sucess: false, err });
-    return res.status(304).send({
+    return res.status(200).send({
       success: true,
     });
   });
