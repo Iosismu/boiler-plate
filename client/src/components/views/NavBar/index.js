@@ -19,7 +19,7 @@ const Navbar = (props) => {
   // }, []);
 
   const onClickHandler = () => {
-    axios.get(`/api/users/logout`).then((response) => {
+    axios.get("/api/users/logout").then((response) => {
       console.log(response.data.success);
       if (response.data.success) {
         window.localStorage.setItem("firstRender", false);
