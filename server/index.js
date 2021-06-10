@@ -1,14 +1,18 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 const { auth } = require("./middleware/auth");
 const { User } = require("./models/User");
 
+// Server static assets if in production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
 }
 
 // application/x-www-form-urlencoded 이렇게 생긴 데이터를 분석해서 가져올 수 있게 해준다.
@@ -106,4 +110,8 @@ app.get("/api/users/logout", auth, (req, res) => {
   });
 });
 
-app.listen(PORT);
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Server Running at ${port}`);
+});
