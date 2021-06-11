@@ -98,7 +98,7 @@ module.exports = function (app) {
 요소들을 가지고 와서 사용
 
 - NavBar
-  ![NAV](./server/image/nav.png)
+  ![NAV](./server/image/nav.PNG)
 
 Elements를 design 한 후
 
@@ -175,9 +175,9 @@ import {
 ### <Ant Design - 로그인, 회원가입 Form 스타일 추가>
 
 - 로그인
-  ![login](./server/image/login.png)
+  ![login](./server/image/login.PNG)
 - 회원가입
-  ![register](./server/image/logout.png)
+  ![register](./server/image/logout.PNG)
 
 ```javascript
 import { Form, Input, Button } from "antd";
