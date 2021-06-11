@@ -22,6 +22,7 @@ const Navbar = (props) => {
     axios.get("/api/users/logout").then((response) => {
       console.log(response.data.success);
       if (response.data.success) {
+        // storage가 false면 로그인, 회원가입 버튼이 보이게
         window.localStorage.setItem("firstRender", false);
         // withRouter이 있어야지만 아래 코드를 쓸 수 있다.
         props.history.push("/");
